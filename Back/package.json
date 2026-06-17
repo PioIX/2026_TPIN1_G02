@@ -1,0 +1,24 @@
+{
+  "name": "tp_g02",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [
+    "ES"
+  ],
+  "license": "ISC",
+  "author": "Joaquin Brizuela,Mateo Carucci, Mateo Leonardi, Juan Ignacio Romano",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "nodemon index.js",
+    "pio": "nodemon --env-file=.pio.env index.js",
+    "home": "nodemon --env-file=.home.env index.js"
+  },
+  "dependencies": {
+    "body-parser": "^2.3.0",
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "mysql2": "^3.22.5",
+    "nodemon": "^3.1.14"
+  }
+}
