@@ -6,7 +6,7 @@
     "ES"
   ],
   "license": "ISC",
-  "author": "Joaquin Brizuela,Mateo Carucci, Mateo Leonardi, Juan Ignacio Romano",
+  "author": "Joaquin Brizuela, Mateo Carucci, Mateo Leonardi, Juan Ignacio Romano",
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
