@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Higher or Lower — Login</title>
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body class="login-page">
+
+    <h1>HIGHER OR LOWER</h1>
+    <p class="subtitulo">¿Podés adivinar cuál es más grande?</p>
+
+    <div class="card card-login">
+        <div class="tabs">
+            <div class="tab activo" onclick="mostrarTab('login')">INICIAR SESIÓN</div>
+            <div class="tab" onclick="mostrarTab('registro')">REGISTRARSE</div>
+        </div>
+
+        <div id="formLogin" class="formulario activo">
+            <input id="loginUsuario" type="text" placeholder="Usuario">
+            <input id="loginContrasena" type="password" placeholder="Contraseña">
+            <button class="btn-primary" onclick="login()">ENTRAR</button>
+            <p id="mensajeLogin" class="mensaje"></p>
+        </div>
+
+        <div id="formRegistro" class="formulario">
+            <input id="regNombre" type="text" placeholder="Nombre completo">
+            <input id="regUsuario" type="text" placeholder="Usuario">
+            <input id="regContrasena" type="password" placeholder="Contraseña">
+            <button class="btn-primary" onclick="registro()">CREAR CUENTA</button>
+            <p id="mensajeRegistro" class="mensaje"></p>
+        </div>
+    </div>
+
+    <script src="scripts/dom.js"></script>
+    <script src="scripts/logic.js"></script>
+</body>
+</html>
