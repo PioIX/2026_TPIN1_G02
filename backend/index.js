@@ -85,7 +85,7 @@ app.get('/Items', async function(req, res) {
         let respuesta = await realizarQuery(`
             SELECT Items.*, Categoria.nombre AS nombre_categoria, Categoria.comparacion
             FROM Items
-            JOIN Categoria ON Items.id_categoria = Categoria.id_categoria
+            INNER JOIN Categoria ON Items.id_categoria = Categoria.id_categoria
         `)
         res.send(respuesta)
     } catch (error) {
@@ -108,3 +108,117 @@ app.post('/Puntajes', async function(req, res) {
     }
 })
 
+// TAREA 7: Ranking y panel admin // 
+// GET /Ranking
+// Devuelve los 10 mejores puntajes, uno por jugador (el máximo)
+app.get('/Ranking', async function(req, res) {
+    try {
+        let respuesta = await realizarQuery(`
+            SELECT Jugadores.usuario, MAX(Puntajes.puntaje) AS mejor_puntaje
+            FROM Puntajes
+            INNER JOIN Jugadores ON Puntajes.id_jugador = Jugadores.id_jugador
+            GROUP BY Jugadores.id_jugador, Jugadores.usuario
+            ORDER BY mejor_puntaje DESC
+            LIMIT 10
+        `)
+        res.send(respuesta)
+    } catch (error) {
+        res.send({ error: error.message })
+    }
+})
+
+// GET /Jugadores — trae todos los jugadores (para panel admin)
+app.get('/Jugadores', async function(req, res) {
+    try {
+        let respuesta = await realizarQuery('SELECT * FROM Jugadores')
+        res.send(respuesta)
+    } catch (error) {
+        res.send({ error: error.message })
+    }
+})
+
+// GET /Categorias — trae todas las categorías (para el select del admin)
+app.get('/Categorias', async function(req, res) {
+    try {
+        let respuesta = await realizarQuery('SELECT * FROM Categorias')
+        res.send(respuesta)
+    } catch (error) {
+        res.send({ error: error.message })
+    }
+})
+
+// POST /Items — agrega un ítem nuevo
+app.post('/Items', async function(req, res) {
+    try {
+        await realizarQuery(`
+            INSERT INTO Items (nombre, imagen_url, valor, id_categoria)
+            VALUES (
+                '${req.body.nombre}',
+                '${req.body.imagen_url}',
+                ${req.body.valor},
+                ${req.body.id_categoria}
+            )
+        `)
+        res.send('Item agregado')
+    } catch (error) {
+        res.send({ error: error.message })
+    }
+})
+
+// PUT /Items — modifica un ítem existente
+app.put('/Items', async function(req, res) {
+    try {
+        await realizarQuery(`
+            UPDATE Items
+            SET
+                nombre = '${req.body.nombre}',
+                imagen_url = '${req.body.imagen_url}',
+                valor = ${req.body.valor},
+                id_categoria = ${req.body.id_categoria}
+            WHERE id_item = ${req.body.id_item}
+        `)
+        res.send('Item modificado')
+    } catch (error) {
+        res.send({ error: error.message })
+    }
+})
+
+// DELETE /Items — elimina un ítem
+app.delete('/Items', async function(req, res) {
+    try {
+        await realizarQuery(`
+            DELETE FROM Items WHERE id_item = ${req.body.id_item}
+        `)
+        res.send('Item eliminado')
+    } catch (error) {
+        res.send({ error: error.message })
+    }
+})
+
+// DELETE /Jugadores — elimina un jugador y sus puntajes
+app.delete('/Jugadores', async function(req, res) {
+    try {
+        // Primero se borran los puntajes para no romper la FK
+        await realizarQuery(`
+            DELETE FROM Puntajes WHERE id_jugador = ${req.body.id_jugador}
+        `)
+        await realizarQuery(`
+            DELETE FROM Jugadores WHERE id_jugador = ${req.body.id_jugador}
+        `)
+        res.send('Jugador eliminado')
+    } catch (error) {
+        res.send({ error: error.message })
+    }
+})
+
+// DELETE /Puntajes — borra todos los puntajes de un jugador
+app.delete('/Puntajes', async function(req, res) {
+    try {
+        await realizarQuery(`
+            DELETE FROM Puntajes WHERE id_jugador = ${req.body.id_jugador}
+        `)
+        res.send('Puntajes eliminados')
+    } catch (error) {
+        res.send({ error: error.message })
+    }
+})
