@@ -61,3 +61,16 @@ app.get('/categoria', async function name(req,res){
     }
     
 })
+
+app.post('/post_puntos',async function(req,res) {
+        console.log(req.body) 
+        try {
+            await realizarQuery(`
+            INSERT INTO Puntajes (puntaje,fecha,id_jugador) VALUES
+                (${req.body.puntaje},"${req.body.fecha}",${req.body.id_jugador});
+            `)
+            res.send({respuesta: "puntaje agregado"})
+        } catch (error) {
+            res.send({respuesta: "Tuviste un error: ", error:error.message})
+        }
+})

@@ -4,8 +4,7 @@ function aleatorio(min, max) {
 async function recibir_imagen() {
     let res = await fetch("http://localhost:4000/cantantes")
     let respuesta = await res.json()
-    let 1 = respuesta[objeto]
-    let 2 = respuesta[objeto2]
+
     console.log(respuesta)
     objeto = aleatorio(1, 28)
     objetos = respuesta
@@ -34,16 +33,19 @@ async function recibir_imagen() {
             }
         }
     }
-    
-    mostrar(1,2)
+    let uno = respuesta[objeto]
+    let dos = respuesta[objeto2]
+    mostrar(respuesta, objeto, objeto2)
 
 }
 
-function mostrar(1,2){
+function mostrar(respuesta, objeto, objeto2){
     if(respuesta[objeto].id_categoria === respuesta[objeto2].id_categoria){
-        document.getElementById("img_1").innerHTML= `<img src="${respuesta[objeto].imagen_url}" alt="">`
-        document.getElementById("img_2").innerHTML= `<img src="${respuesta[objeto].imagen_url}" alt="">`
+        document.getElementById("img_1").innerHTML= `<img src="${respuesta[objeto].imagen_url}" alt="${respuesta[objeto].nombre}">`
+        document.getElementById("img_2").innerHTML= `<img src="${respuesta[objeto2].imagen_url}" alt="${respuesta[objeto2].nombre}">`
         }else{
             recibir_imagen()
         }
 }
+
+
