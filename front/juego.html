@@ -4,14 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Juego principal</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body onload="recibir_imagen()">
+<body onload="recibir_id()">
     <div>
-        <div id="img_1">
-            <img src="" alt="">
+        <div id="div_1">
+            <img id="img_1" src="" alt="">
+            <p id="valor1"></p>
         </div>
-        <div id="img_2">
-            <img src="" alt="">
+        <div id="div_2">
+            <img id="img_2" src="" alt="">
+            <p id="valor2"></p>
+            <button>Higher</button>
+            <button>Lower</button>
         </div>
     </div>
     <script src="logic.js"></script>
