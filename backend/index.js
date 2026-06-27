@@ -83,9 +83,9 @@ app.post('/Login', async function(req, res) {
 app.get('/Items', async function(req, res) {
     try {
         let respuesta = await realizarQuery(`
-            SELECT Items.*, Categoria.nombre AS nombre_categoria, Categoria.comparacion
+            SELECT Items.*, Categorias.nombre AS nombre_categoria, Categorias.comparacion
             FROM Items
-            INNER JOIN Categoria ON Items.id_categoria = Categoria.id_categoria
+            INNER JOIN Categorias ON Items.id_categoria = Categorias.id_categoria
         `)
         res.send(respuesta)
     } catch (error) {
