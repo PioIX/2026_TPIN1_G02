@@ -43,7 +43,7 @@ La opción de juego será Higher or Lower. El juego consiste en elegir una u otr
 8. Frontend – login y registro (HTML, CSS y JS con fetch a las rutas del servidor)
 9. Frontend – pantalla del juego (renderizado del par de ítems, botones Higher/Lower, revelación del valor oculto, actualización del ítem de referencia con DOM y clases)
 10. Frontend – fin de partida y ranking (pantalla con puntaje final y tabla de mejores puntajes cargada con fetch)
-11. Frontend – panel de administrador (formularios para agregar, editar y eliminar ítems; gestión de usuarios y puntajes)
+11. Frontend – panel de administrador, menú y cómo jugar (formularios para agregar, editar y eliminar ítems; gestión de usuarios y puntajes; página de menú principal y página de cómo jugar)
 12. Testeo, integración y puesta en producción
 
 ---
@@ -52,10 +52,23 @@ La opción de juego será Higher or Lower. El juego consiste en elegir una u otr
 
 | Integrante | Tareas |
 |---|---|
-| Romano | 1, 3 y 4 |
+| Romano | 1, 3, 4 y 11 |
 | Brizuela | 2, 5 y 8 |
 | Leonardi | 6, 7 y 9 |
-| Carucci | 10, 11 y 12 |
+| Carucci | 3, 10, 11 y 12 |
+
+---
+
+## Entregables
+
+**Primer entregable — Login y Registro (hasta el 25/6)**
+Backend completo de login y registro (rutas /Login y /Registro), frontend de login y registro (index.html con fetch al servidor) y lógica del juego en el backend (rutas /Items y /Puntajes).
+
+**Segundo entregable — Panel Administrador (hasta el 2/7)**
+Backend de ranking y panel admin (rutas /Ranking, /Jugadores, /Categorias, CRUD de /Items y /Puntajes), frontend de la pantalla del juego (juego.html con clases Item y Juego, manejo del DOM) y frontend del panel de administrador (admin.html).
+
+**Entrega final — Juego completo (hasta el 13/7)**
+Frontend de fin de partida y ranking (ranking.html), frontend de menú y cómo jugar (menu.html, como-jugar.html), testeo, integración y puesta en producción.
 
 ---
 
