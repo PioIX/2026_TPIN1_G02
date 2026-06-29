@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Higher or Lower — Menú</title>
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body class="menu-page">
+
+    <h1>HIGHER OR LOWER</h1>
+    <p class="bienvenida" id="saludo"></p>
+
+    <div class="menu-botones">
+        <button class="btn-primary"   onclick="window.location.href='juego.html'">JUGAR</button>
+        <button class="btn-secondary" onclick="window.location.href='ranking.html'">RANKING</button>
+        <button class="btn-secondary" onclick="window.location.href='como-jugar.html'">CÓMO JUGAR</button>
+    </div>
+
+    <p class="cerrar-sesion" onclick="cerrarSesion()">CERRAR SESIÓN</p>
+
+    <script>
+        let jugador = JSON.parse(sessionStorage.getItem('jugador'));
+        if (!jugador) window.location.href = 'index.html';
+        document.getElementById('saludo').textContent = 'Hola, ' + jugador.nombre;
+
+        function cerrarSesion() {
+            sessionStorage.removeItem('jugador');
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>
