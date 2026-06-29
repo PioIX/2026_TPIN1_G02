@@ -64,7 +64,7 @@ function mayor(uno,dos){
         let datos = {
             puntaje: puntos,
             fecha: Date,
-            id_jugador:
+            id_jugador: null
         }
         guardarPuntaje(datos)
     }
@@ -77,7 +77,7 @@ function menor(){
         let datos = {
             puntaje: puntos,
             fecha: Date,
-            id_jugador:
+            id_jugador: null
         }
         guardarPuntaje(datos)
     }
