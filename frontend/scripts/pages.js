@@ -1,11 +1,24 @@
-// ── JUEGO (juego.html) ────────────────────────────────────
+// MENU (menu.html) 
+
+function iniciarPaginaMenu() {
+    let jugador = JSON.parse(sessionStorage.getItem('jugador'));
+    if (!jugador) window.location.href = 'index.html';
+    document.getElementById('saludo').textContent = 'Hola, ' + jugador.nombre;
+}
+
+function cerrarSesion() {
+    sessionStorage.removeItem('jugador');
+    window.location.href = 'index.html';
+}
+
+// JUEGO (juego.html) 
 
 function iniciarPaginaJuego() {
     let jugador = JSON.parse(sessionStorage.getItem('jugador'));
     if (!jugador) window.location.href = 'index.html';
 }
 
-// ── ADMIN (admin.html) ────────────────────────────────────
+// ADMIN (admin.html) 
 
 function iniciarPaginaAdmin() {
     let jugador = JSON.parse(sessionStorage.getItem('jugador'));
@@ -25,3 +38,5 @@ function cambiarTab(tab) {
         document.getElementById('seccionJugadores').classList.add('activa');
     }
 }
+
+
