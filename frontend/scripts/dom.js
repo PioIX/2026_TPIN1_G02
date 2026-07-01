@@ -2,7 +2,6 @@
 
 function getLoginUsuario()    { return document.getElementById('loginUsuario').value }
 function getLoginContrasena() { return document.getElementById('loginContrasena').value }
-
 function getRegNombre()     { return document.getElementById('regNombre').value }
 function getRegUsuario()    { return document.getElementById('regUsuario').value }
 function getRegContrasena() { return document.getElementById('regContrasena').value }
@@ -34,6 +33,46 @@ function mostrarTab(tab) {
     }
 }
 
+// ── JUEGO (juego.html) ────────────────────────────────────
+
+// Mostrar el ítem de la izquierda (el de referencia, con valor visible)
+function mostrarItemIzquierda(item) {
+    document.getElementById('imagenIzquierda').src            = item.imagen_url;
+    document.getElementById('nombreIzquierda').textContent    = item.nombre;
+    document.getElementById('categoriaIzquierda').textContent = item.comparacion;
+    document.getElementById('valorIzquierda').textContent     = item.valorFormateado();
+}
+
+// Mostrar el ítem de la derecha (el que hay que adivinar, valor oculto)
+function mostrarItemDerecha(item) {
+    document.getElementById('imagenDerecha').src            = item.imagen_url;
+    document.getElementById('nombreDerecha').textContent    = item.nombre;
+    document.getElementById('categoriaDerecha').textContent = item.comparacion;
+    document.getElementById('valorDerecha').textContent     = '???';
+}
+
+// Mostrar el valor real del ítem de la derecha (cuando el jugador ya respondió)
+function revelarValorDerecha(item) {
+    document.getElementById('valorDerecha').textContent = item.valorFormateado();
+}
+
+// Actualizar el número de puntaje que aparece arriba
+function actualizarPuntaje(puntaje) {
+    document.getElementById('puntajeActual').textContent = puntaje;
+}
+
+// Mostrar el cartel de "CORRECTO" o "INCORRECTO" sobre la pantalla
+function mostrarResultado(acerto) {
+    let overlay = document.getElementById('overlayResultado');
+    let texto   = document.getElementById('textoResultado');
+    texto.textContent = acerto ? '✓ CORRECTO' : '✗ INCORRECTO';
+    texto.className   = acerto ? 'resultado-ok' : 'resultado-error';
+    overlay.style.display = 'flex';
+}
+
+// Ocultar el cartel de resultado
+function ocultarResultado() {
+    document.getElementById('overlayResultado').style.display = 'none';
 
 // ── Ranking ───────────────────────────────────────────────
 
