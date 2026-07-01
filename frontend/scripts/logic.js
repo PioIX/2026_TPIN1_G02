@@ -3,14 +3,14 @@ const BASE_URL = 'http://localhost:4000';
 // TAREA 5: Login y Registro
 async function login() {
     let datos = {
-        usuario:    getLoginUsuario(),
+        usuario: getLoginUsuario(),
         contrasena: getLoginContrasena()
     }
 
     const response = await fetch(`${BASE_URL}/Login`, {
-        method:  'POST',
+        method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body:    JSON.stringify(datos)
+        body: JSON.stringify(datos)
     })
 
     let result = await response.json()
@@ -31,15 +31,15 @@ async function login() {
 
 async function registro() {
     let datos = {
-        nombre:     getRegNombre(),
-        usuario:    getRegUsuario(),
+        nombre: getRegNombre(),
+        usuario: getRegUsuario(),
         contrasena: getRegContrasena()
     }
 
     const response = await fetch(`${BASE_URL}/Registro`, {
-        method:  'POST',
+        method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body:    JSON.stringify(datos)
+        body: JSON.stringify(datos)
     })
 
     let result = await response.text()
