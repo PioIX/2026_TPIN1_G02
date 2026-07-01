@@ -21,15 +21,10 @@ function mostrarMensajeRegistro(texto, esError = true) {
 
 // Cambia entre los tabs de login y registro
 function mostrarTab(tab) {
-    document.getElementById('formLogin').classList.remove('activo');
-    document.getElementById('formRegistro').classList.remove('activo');
-    document.querySelectorAll('.tab').forEach(t => t.classList.remove('activo'));
+    let esLogin = tab === 'login';
 
-    if (tab === 'login') {
-        document.getElementById('formLogin').classList.add('activo');
-        document.querySelectorAll('.tab')[0].classList.add('activo');
-    } else {
-        document.getElementById('formRegistro').classList.add('activo');
-        document.querySelectorAll('.tab')[1].classList.add('activo');
-    }
+    document.getElementById('formLogin').classList.toggle('activo', esLogin);
+    document.getElementById('formRegistro').classList.toggle('activo', !esLogin);
+    document.querySelectorAll('.tab')[0].classList.toggle('activo', esLogin);
+    document.querySelectorAll('.tab')[1].classList.toggle('activo', !esLogin);
 }
