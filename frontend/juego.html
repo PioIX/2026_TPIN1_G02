@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Higher or Lower — Juego</title>
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body class="juego-page" onload="iniciarPaginaJuego()">
+
+    <div class="topbar">
+        <span class="topbar-titulo">HIGHER OR LOWER</span>
+        <span class="topbar-puntaje">PUNTAJE <span id="puntajeActual">0</span></span>
+    </div>
+
+    <!-- Selector de categoría: se muestra al entrar, se oculta al elegir -->
+    <div id="selectorCategoria">
+        <h2 class="selector-titulo">¿Con qué querés jugar?</h2>
+        <div class="selector-botones">
+            <button class="btn-categoria" onclick="elegirCategoria(1)">
+                <span class="cat-emoji">🎵</span>
+                ARTISTAS
+            </button>
+            <button class="btn-categoria" onclick="elegirCategoria(2)">
+                <span class="cat-emoji">🎬</span>
+                PELÍCULAS
+            </button>
+        </div>
+        <button class="btn-secondary" onclick="window.location.href='menu.html'">← VOLVER AL MENÚ</button>
+    </div>
+
+    <!-- Arena del juego: oculta hasta que el usuario elige categoría -->
+    <div class="arena" id="arenaJuego" style="display:none">
+
+        <div class="panel">
+            <img id="imagenIzquierda" src="" alt="">
+            <p  id="nombreIzquierda"    class="panel-nombre"></p>
+            <p  id="categoriaIzquierda" class="panel-comparacion"></p>
+            <p  id="valorIzquierda"     class="panel-valor"></p>
+        </div>
+
+        <div class="divisor">
+            <span class="vs">VS</span>
+            <button class="btn-higher" onclick="responder('higher')">HIGHER ▲</button>
+            <button class="btn-lower"  onclick="responder('lower')">LOWER ▼</button>
+        </div>
+
+        <div class="panel">
+            <img id="imagenDerecha"   src="" alt="">
+            <p  id="nombreDerecha"    class="panel-nombre"></p>
+            <p  id="categoriaDerecha" class="panel-comparacion"></p>
+            <p  id="valorDerecha"     class="panel-valor">???</p>
+        </div>
+
+        <div id="overlayResultado">
+            <p id="textoResultado"></p>
+        </div>
+
+    </div>
+
+    <script src="scripts/classes/Item.js"></script>
+    <script src="scripts/classes/Juego.js"></script>
+    <script src="scripts/dom.js"></script>
+    <script src="scripts/logic.js"></script>
+    <script src="scripts/pages.js"></script>
+</body>
+</html>
