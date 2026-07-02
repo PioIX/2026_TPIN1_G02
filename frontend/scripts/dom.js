@@ -33,7 +33,7 @@ function mostrarTab(tab) {
     }
 }
 
-// ── JUEGO (juego.html) ────────────────────────────────────
+// JUEGO (juego.html) 
 
 // Mostrar el ítem de la izquierda (el de referencia, con valor visible)
 function mostrarItemIzquierda(item) {
@@ -61,15 +61,13 @@ function actualizarPuntaje(puntaje) {
     document.getElementById('puntajeActual').textContent = puntaje;
 }
 
-// Mostrar el cartel de "CORRECTO" o "INCORRECTO" sobre la pantalla
+// Mostrar el cartel de CORRECTO o INCORRECTO encima de todo
 function mostrarResultado(acerto) {
-    let overlay = document.getElementById('overlayResultado');
-    let texto   = document.getElementById('textoResultado');
-    texto.textContent = acerto ? '✓ CORRECTO' : '✗ INCORRECTO';
-    texto.className   = acerto ? 'resultado-ok' : 'resultado-error';
-    overlay.style.display = 'flex';
+    document.getElementById('textoResultado').textContent = acerto ? '✓ CORRECTO' : '✗ INCORRECTO';
+    document.getElementById('textoResultado').className   = acerto ? 'resultado-ok' : 'resultado-error';
+    document.getElementById('overlayResultado').style.display = 'flex';
 }
-
+ 
 // Ocultar el cartel de resultado
 function ocultarResultado() {
     document.getElementById('overlayResultado').style.display = 'none';
