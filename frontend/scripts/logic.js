@@ -1,16 +1,34 @@
 const BASE_URL = 'http://localhost:4000';
 
+async function pedirAlServidor(ruta, metodo = 'GET', datos = null) {
+    let opciones = {
+        method:  metodo,
+        headers: { 'Content-Type': 'application/json' }
+    }
+    if (datos) opciones.body = JSON.stringify(datos);
+ 
+    let response = await fetch(BASE_URL + ruta, opciones);
+ 
+    // Si el servidor devuelve texto plano (ej: "Registro exitoso") usamos .text()
+    // Si devuelve un objeto o array usamos .json()
+    let contentType = response.headers.get('content-type');
+    if (contentType && contentType.includes('application/json')) {
+        return await response.json();
+    }
+    return await response.text();
+}
+
 // TAREA 5: Login y Registro
 async function login() {
     let datos = {
-        usuario:    getLoginUsuario(),
+        usuario: getLoginUsuario(),
         contrasena: getLoginContrasena()
     }
 
     const response = await fetch(`${BASE_URL}/Login`, {
-        method:  'POST',
+        method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body:    JSON.stringify(datos)
+        body: JSON.stringify(datos)
     })
 
     let result = await response.json()
@@ -31,15 +49,15 @@ async function login() {
 
 async function registro() {
     let datos = {
-        nombre:     getRegNombre(),
-        usuario:    getRegUsuario(),
+        nombre: getRegNombre(),
+        usuario: getRegUsuario(),
         contrasena: getRegContrasena()
     }
 
     const response = await fetch(`${BASE_URL}/Registro`, {
-        method:  'POST',
+        method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body:    JSON.stringify(datos)
+        body: JSON.stringify(datos)
     })
 
     let result = await response.text()
