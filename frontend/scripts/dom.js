@@ -71,7 +71,7 @@ function mostrarResultado(acerto) {
 // Ocultar el cartel de resultado
 function ocultarResultado() {
     document.getElementById('overlayResultado').style.display = 'none';
-
+}
 // ── Ranking ───────────────────────────────────────────────
 
 // Llena la tabla de ranking con el array de filas recibido del backend
