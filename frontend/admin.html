@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Higher or Lower — Admin</title>
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body class="admin-page">
+
+    <div class="admin-header">
+        <h1>PANEL ADMIN</h1>
+        <button class="btn-secondary" onclick="cerrarSesion()">CERRAR SESIÓN</button>
+    </div>
+
+    <p id="mensajeAdmin" class="mensaje ok"></p>
+
+    <div class="admin-tabs">
+        <div class="admin-tab activo" onclick="cambiarTab('items')">ÍTEMS</div>
+        <div class="admin-tab"        onclick="cambiarTab('jugadores')">JUGADORES</div>
+    </div>
+
+    <div id="seccionItems" class="admin-seccion activa">
+
+        <h2>AGREGAR ÍTEM</h2>
+        <div class="form-grid">
+            <input id="agregarNombre"    type="text"   placeholder="Nombre">
+            <input id="agregarImagen"    type="text"   placeholder="URL de imagen (ej: public/spotify/nombre.jpg)">
+            <input id="agregarValor"     type="number" placeholder="Valor numérico">
+            <select id="agregarCategoria"></select>
+        </div>
+        <button class="btn-primary" onclick="agregarItem()">AGREGAR</button>
+
+        <div id="formEdicion">
+            <h3>EDITANDO ÍTEM</h3>
+            <input id="editId" type="hidden">
+            <div class="form-grid">
+                <input id="editNombre"    type="text"   placeholder="Nombre">
+                <input id="editImagen"    type="text"   placeholder="URL de imagen">
+                <input id="editValor"     type="number" placeholder="Valor numérico">
+                <select id="editCategoria"></select>
+            </div>
+            <div>
+                <button class="btn-primary"   onclick="editarItem()">GUARDAR CAMBIOS</button>
+                <button class="btn-secondary" onclick="mostrarFormEdicion(false)">CANCELAR</button>
+            </div>
+        </div>
+
+        <h2>ÍTEMS EN LA BASE DE DATOS</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th><th>NOMBRE</th><th>CATEGORÍA</th><th>VALOR</th><th>ACCIONES</th>
+                </tr>
+            </thead>
+            <tbody id="tablaItems"></tbody>
+        </table>
+    </div>
+
+    <div id="seccionJugadores" class="admin-seccion">
+        <h2>JUGADORES REGISTRADOS</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th><th>NOMBRE</th><th>USUARIO</th><th>ACCIONES</th>
+                </tr>
+            </thead>
+            <tbody id="tablaJugadores"></tbody>
+        </table>
+    </div>
+
+    <script src="scripts/dom.js"></script>
+    <script src="scripts/logic.js"></script>
+    <script>
+        let jugador = JSON.parse(sessionStorage.getItem('jugador'));
+        if (!jugador || !jugador.es_admin) window.location.href = 'index.html';
+
+        window.onload = cargarDatosAdmin;
+
+        function cambiarTab(tab) {
+            document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('activo'));
+            document.querySelectorAll('.admin-seccion').forEach(s => s.classList.remove('activa'));
+            if (tab === 'items') {
+                document.querySelectorAll('.admin-tab')[0].classList.add('activo');
+                document.getElementById('seccionItems').classList.add('activa');
+            } else {
+                document.querySelectorAll('.admin-tab')[1].classList.add('activo');
+                document.getElementById('seccionJugadores').classList.add('activa');
+            }
+        }
+
+        function cerrarSesion() {
+            sessionStorage.removeItem('jugador');
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>
