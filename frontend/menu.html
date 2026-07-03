@@ -19,15 +19,8 @@
 
     <p class="cerrar-sesion" onclick="cerrarSesion()">CERRAR SESIÓN</p>
 
-    <script>
-        let jugador = JSON.parse(sessionStorage.getItem('jugador'));
-        if (!jugador) window.location.href = 'index.html';
-        document.getElementById('saludo').textContent = 'Hola, ' + jugador.nombre;
-
-        function cerrarSesion() {
-            sessionStorage.removeItem('jugador');
-            window.location.href = 'index.html';
-        }
-    </script>
+    <script src="scripts/dom.js"></script>
+    <script src="scripts/logic.js"></script>
+    <script src="scripts/pages.js"></script>
 </body>
 </html>
