@@ -20,10 +20,12 @@ function mostrarMensajeRegistro(texto, esError = true) {
 
 // Cambia entre los tabs de login y registro
 function mostrarTab(tab) {
-    document.getElementById('formLogin').classList.remove('activo');
-    document.getElementById('formRegistro').classList.remove('activo');
-    document.querySelectorAll('.tab').forEach(t => t.classList.remove('activo'));
+    let esLogin = tab === 'login';
 
+    document.getElementById('formLogin').classList.toggle('activo', esLogin);
+    document.getElementById('formRegistro').classList.toggle('activo', !esLogin);
+    document.querySelectorAll('.tab')[0].classList.toggle('activo', esLogin);
+    document.querySelectorAll('.tab')[1].classList.toggle('activo', !esLogin);
     if (tab === 'login') {
         document.getElementById('formLogin').classList.add('activo');
         document.querySelectorAll('.tab')[0].classList.add('activo');
@@ -33,7 +35,7 @@ function mostrarTab(tab) {
     }
 }
 
-// ── JUEGO (juego.html) ────────────────────────────────────
+// JUEGO (juego.html) 
 
 // Mostrar el ítem de la izquierda (el de referencia, con valor visible)
 function mostrarItemIzquierda(item) {
@@ -61,19 +63,17 @@ function actualizarPuntaje(puntaje) {
     document.getElementById('puntajeActual').textContent = puntaje;
 }
 
-// Mostrar el cartel de "CORRECTO" o "INCORRECTO" sobre la pantalla
+// Mostrar el cartel de CORRECTO o INCORRECTO encima de todo
 function mostrarResultado(acerto) {
-    let overlay = document.getElementById('overlayResultado');
-    let texto   = document.getElementById('textoResultado');
-    texto.textContent = acerto ? '✓ CORRECTO' : '✗ INCORRECTO';
-    texto.className   = acerto ? 'resultado-ok' : 'resultado-error';
-    overlay.style.display = 'flex';
+    document.getElementById('textoResultado').textContent = acerto ? '✓ CORRECTO' : '✗ INCORRECTO';
+    document.getElementById('textoResultado').className   = acerto ? 'resultado-ok' : 'resultado-error';
+    document.getElementById('overlayResultado').style.display = 'flex';
 }
-
+ 
 // Ocultar el cartel de resultado
 function ocultarResultado() {
     document.getElementById('overlayResultado').style.display = 'none';
-
+}
 // ── Ranking ───────────────────────────────────────────────
 
 // Llena la tabla de ranking con el array de filas recibido del backend
