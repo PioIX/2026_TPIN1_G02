@@ -1,11 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Higher or Lower — Ranking</title>
+    <link rel="stylesheet" href="styles/styles.css">
 </head>
-<body>
-    
+<body class="ranking-page" onload="iniciarPaginaRanking()">
+
+    <h1>RANKING</h1>
+
+    <div id="finPartida">
+        <h2>TU PUNTAJE</h2>
+        <div id="puntajeFinal"></div>
+        <div class="botones-fin">
+            <button class="btn-primary"   onclick="window.location.href='juego.html'">JUGAR DE NUEVO</button>
+            <button class="btn-secondary" onclick="window.location.href='menu.html'">MENÚ</button>
+        </div>
+    </div>
+
+    <div class="ranking-container">
+        <h2 style="text-align:center; margin-bottom:16px">TOP 10</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>JUGADOR</th>
+                    <th class="puntaje-col">PUNTAJE</th>
+                </tr>
+            </thead>
+            <tbody id="tablaRanking"></tbody>
+        </table>
+    </div>
+
+    <button class="btn-secondary" onclick="window.location.href='menu.html'">← VOLVER AL MENÚ</button>
+
+    <script src="scripts/dom.js"></script>
+    <script src="scripts/logic.js"></script>
+    <script src="scripts/pages.js"></script>
 </body>
 </html>

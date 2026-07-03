@@ -1,18 +1,18 @@
 // Juego.js — Clase que maneja el estado de una partida
 class Juego {
     constructor(items) {
-        this.items         = items;
-        this.puntaje       = 0;
-        this.itemActual    = null;  
+        this.items = items;
+        this.puntaje = 0;
+        this.itemActual = null;  
         this.itemSiguiente = null;  
-        this.terminado     = false;
+        this.terminado = false;
     }
 
     iniciar() {
-        this.itemActual    = this.itemAlAzar();
+        this.itemActual = this.itemAlAzar();
         this.itemSiguiente = this.itemAlAzarDistinto(this.itemActual);
-        this.puntaje       = 0;
-        this.terminado     = false;
+        this.puntaje = 0;
+        this.terminado = false;
     }
 
     itemAlAzar() {
@@ -40,7 +40,7 @@ class Juego {
 
         if (acerto) {
             this.puntaje++;
-            this.itemActual    = this.itemSiguiente;
+            this.itemActual = this.itemSiguiente;
             this.itemSiguiente = this.itemAlAzarDistinto(this.itemActual);
         } else {
             this.terminado = true;
