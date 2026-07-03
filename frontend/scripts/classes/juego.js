@@ -40,7 +40,7 @@ class Juego {
 
         if (acerto) {
             this.puntaje++;
-            this.itemActual == this.itemSiguiente;
+            this.itemActual = this.itemSiguiente;
             this.itemSiguiente = this.itemAlAzarDistinto(this.itemActual);
         } else {
             this.terminado = true;
