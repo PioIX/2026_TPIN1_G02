@@ -156,7 +156,7 @@ async function cargarRanking() {
     let filas = await pedirAlServidor('/Ranking');
     let jugador = JSON.parse(sessionStorage.getItem('jugador'));
     let usuarioActual = jugador ? jugador.usuario : null;
-    mostrarTablaRanking(filas, usuarioActual);
+    renderizarTablaRanking(filas, usuarioActual);
 }
 
 // TAREA 7 + 11: Panel Admin (admin.html)
@@ -172,7 +172,7 @@ async function cargarDatosAdmin() {
 
 async function cargarItems() {
     itemsGuardados = await pedirAlServidor('/Items');
-    mostrarTablaItems(itemsGuardados);
+    renderizarTablaItems(itemsGuardados);
 }
 
 async function cargarJugadores() {

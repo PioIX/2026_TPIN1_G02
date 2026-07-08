@@ -23,7 +23,7 @@ function iniciarPaginaJuego() {
 function iniciarPaginaRanking() {
     let puntaje = sessionStorage.getItem('ultimoPuntaje');
     if (puntaje !== null) {
-        mostrarPuntajeFinal(puntaje);
+        mostrarFinPartida(puntaje);
         sessionStorage.removeItem('ultimoPuntaje');
     }
     cargarRanking();

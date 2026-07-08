@@ -133,7 +133,6 @@ function renderizarTablaItems(items) {
                 <td>
                     <button class="btn-secondary" onclick="prepararEdicion(${item.id_item})">Editar</button>
                     <button class="btn-danger" onclick="eliminarItem(${item.id_item})">Eliminar</button>
-                    <button class="btn-danger" onclick="eliminarItem(${item.id_item})">Eliminar</button>
                 </td>
             </tr>
         `;
