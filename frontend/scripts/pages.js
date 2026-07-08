@@ -18,6 +18,17 @@ function iniciarPaginaJuego() {
     if (!jugador) window.location.href = 'index.html';
 }
 
+// ── RANKING (ranking.html) ────────────────────────────────
+ 
+function iniciarPaginaRanking() {
+    let puntaje = sessionStorage.getItem('ultimoPuntaje');
+    if (puntaje !== null) {
+        mostrarPuntajeFinal(puntaje);
+        sessionStorage.removeItem('ultimoPuntaje');
+    }
+    cargarRanking();
+}
+
 // ADMIN (admin.html) 
 
 function iniciarPaginaAdmin() {

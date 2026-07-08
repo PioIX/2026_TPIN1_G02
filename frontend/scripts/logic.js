@@ -144,8 +144,95 @@ async function guardarPuntaje(puntaje) {
     let jugador = JSON.parse(sessionStorage.getItem('jugador'));
 
     await fetch(`${BASE_URL}/Puntajes`, {
-        method:  'POST',
+        method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body:    JSON.stringify({ puntaje: puntaje, id_jugador: jugador.id_jugador })
+        body: JSON.stringify({ puntaje: puntaje, id_jugador: jugador.id_jugador })
     })
+}
+
+// TAREA 10: Ranking (ranking.html)
+// Pide el top 10 al servidor y lo muestra en la tabla
+async function cargarRanking() {
+    let filas = await pedirAlServidor('/Ranking');
+    let jugador = JSON.parse(sessionStorage.getItem('jugador'));
+    let usuarioActual = jugador ? jugador.usuario : null;
+    mostrarTablaRanking(filas, usuarioActual);
+}
+
+// TAREA 7 + 11: Panel Admin (admin.html)
+let itemsGuardados      = []; // copia local para poder editar sin ir al servidor
+let categoriasGuardadas = [];
+
+// Carga todos los datos al abrir el panel admin
+async function cargarDatosAdmin() {
+    await cargarItems();
+    await cargarJugadores();
+    await cargarCategorias();
+}
+
+async function cargarItems() {
+    itemsGuardados = await pedirAlServidor('/Items');
+    mostrarTablaItems(itemsGuardados);
+}
+
+async function cargarJugadores() {
+    let jugadores = await pedirAlServidor('/Jugadores');
+    mostrarTablaJugadores(jugadores);
+}
+
+async function cargarCategorias() {
+    categoriasGuardadas = await pedirAlServidor('/Categorias');
+    llenarSelectCategorias(categoriasGuardadas, 'agregarCategoria');
+    llenarSelectCategorias(categoriasGuardadas, 'editCategoria');
+}
+
+// Agrega un ítem nuevo con los datos del formulario
+async function agregarItem() {
+    let datos = {
+        nombre: document.getElementById('agregarNombre').value,
+        imagen_url: document.getElementById('agregarImagen').value,
+        valor: document.getElementById('agregarValor').value,
+        id_categoria: document.getElementById('agregarCategoria').value
+    }
+    await pedirAlServidor('/Items', 'POST', datos);
+    mostrarMensajeAdmin('Item agregado correctamente');
+    await cargarItems();
+}
+
+// Busca el ítem en la copia local y abre el formulario de edición con sus datos
+function prepararEdicion(id_item) {
+    let item = itemsGuardados.find(i => i.id_item === id_item);
+    if (item) cargarDatosEdicion(item);
+}
+
+// Guarda los cambios del formulario de edición
+async function editarItem() {
+    let datos = {
+        id_item: document.getElementById('editId').value,
+        nombre: document.getElementById('editNombre').value,
+        imagen_url: document.getElementById('editImagen').value,
+        valor: document.getElementById('editValor').value,
+        id_categoria: document.getElementById('editCategoria').value
+    }
+    await pedirAlServidor('/Items', 'PUT', datos);
+    mostrarFormEdicion(false);
+    mostrarMensajeAdmin('Item modificado correctamente');
+    await cargarItems();
+}
+
+async function eliminarItem(id_item) {
+    await pedirAlServidor('/Items', 'DELETE', { id_item });
+    mostrarMensajeAdmin('Item eliminado');
+    await cargarItems();
+}
+
+async function eliminarPuntajes(id_jugador) {
+    await pedirAlServidor('/Puntajes', 'DELETE', { id_jugador });
+    mostrarMensajeAdmin('Puntajes eliminados');
+}
+
+async function eliminarJugador(id_jugador) {
+    await pedirAlServidor('/Jugadores', 'DELETE', { id_jugador });
+    mostrarMensajeAdmin('Jugador eliminado');
+    await cargarJugadores();
 }
