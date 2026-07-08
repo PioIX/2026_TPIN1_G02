@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Higher or Lower — Cómo jugar</title>
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body class="como-jugar-page">
+
+    <h1>CÓMO JUGAR</h1>
+
+    <div class="como-jugar-container">
+
+        <div class="paso">
+            <span class="paso-numero">01</span>
+            <div>
+                <p class="paso-titulo">Dos opciones en pantalla</p>
+                <p class="paso-descripcion">
+                    Vas a ver dos elementos lado a lado. El de la izquierda muestra su valor real.
+                    El de la derecha lo tiene oculto con un <strong>???</strong>.
+                </p>
+            </div>
+        </div>
+
+        <div class="paso">
+            <span class="paso-numero">02</span>
+            <div>
+                <p class="paso-titulo">Higher o Lower</p>
+                <p class="paso-descripcion">
+                    Decidís si el elemento de la derecha tiene un valor <strong>mayor (Higher ▲)</strong>
+                    o <strong>menor (Lower ▼)</strong> que el de la izquierda.
+                </p>
+            </div>
+        </div>
+
+        <div class="paso">
+            <span class="paso-numero">03</span>
+            <div>
+                <p class="paso-titulo">Si acertás, seguís</p>
+                <p class="paso-descripcion">
+                    Se revela el valor real y sumás 1 punto. El elemento de la derecha
+                    pasa a ser la nueva referencia de la izquierda, y aparece uno nuevo a adivinar.
+                </p>
+            </div>
+        </div>
+
+        <div class="paso">
+            <span class="paso-numero">04</span>
+            <div>
+                <p class="paso-titulo">Si fallás, se acabó</p>
+                <p class="paso-descripcion">
+                    La partida termina y tu puntaje queda registrado. Podés ver tu posición
+                    en la tabla de los mejores puntajes globales.
+                </p>
+            </div>
+        </div>
+
+        <div class="paso">
+            <span class="paso-numero">05</span>
+            <div>
+                <p class="paso-titulo">No hay límite de rondas</p>
+                <p class="paso-descripcion">
+                    El juego no termina por tiempo ni por cantidad de preguntas.
+                    La única forma de parar es fallando. ¿Hasta dónde llegás?
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <button class="btn-primary" onclick="window.location.href='juego.html'">JUGAR AHORA</button>
+    <button class="btn-secondary" onclick="window.location.href='menu.html'">← VOLVER AL MENÚ</button>
+
+</body>
+</html>

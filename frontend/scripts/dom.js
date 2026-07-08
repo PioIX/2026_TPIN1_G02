@@ -51,7 +51,7 @@ function mostrarItemIzquierda(item) {
     document.getElementById('imagenIzquierda').src = item.imagen_url;
     document.getElementById('nombreIzquierda').textContent = item.nombre;
     document.getElementById('categoriaIzquierda').textContent = item.comparacion;
-    document.getElementById('valorIzquierda').textContent = item.valorFormateado();
+    document.getElementById('valorIzquierda').textContent = item.valorFormateado()+" M";
 }
 
 // Mostrar el ítem de la derecha (el que hay que adivinar, valor oculto)
@@ -67,7 +67,7 @@ function mostrarItemDerecha(item) {
 
 // Mostrar el valor real del ítem de la derecha (cuando el jugador ya respondió)
 function revelarValorDerecha(item) {
-    document.getElementById('valorDerecha').textContent = item.valorFormateado();
+    document.getElementById('valorDerecha').textContent = item.valorFormateado()+" M";
 }
 
 // Actualizar el número de puntaje que aparece arriba
