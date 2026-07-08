@@ -47,10 +47,10 @@ function mostrarItemIzquierda(item) {
 
 // Mostrar el ítem de la derecha (el que hay que adivinar, valor oculto)
 function mostrarItemDerecha(item) {
-    document.getElementById('imagenDerecha').src            = item.imagen_url;
-    document.getElementById('nombreDerecha').textContent    = item.nombre;
+    document.getElementById('imagenDerecha').src = item.imagen_url;
+    document.getElementById('nombreDerecha').textContent = item.nombre;
     document.getElementById('categoriaDerecha').textContent = item.comparacion;
-    document.getElementById('valorDerecha').textContent     = '???';
+    document.getElementById('valorDerecha').textContent = '???';
 }
 
 // Mostrar el valor real del ítem de la derecha (cuando el jugador ya respondió)
@@ -66,7 +66,7 @@ function actualizarPuntaje(puntaje) {
 // Mostrar el cartel de CORRECTO o INCORRECTO encima de todo
 function mostrarResultado(acerto) {
     document.getElementById('textoResultado').textContent = acerto ? '✓ CORRECTO' : '✗ INCORRECTO';
-    document.getElementById('textoResultado').className   = acerto ? 'resultado-ok' : 'resultado-error';
+    document.getElementById('textoResultado').className = acerto ? 'resultado-ok' : 'resultado-error';
     document.getElementById('overlayResultado').style.display = 'flex';
 }
  
@@ -74,8 +74,7 @@ function mostrarResultado(acerto) {
 function ocultarResultado() {
     document.getElementById('overlayResultado').style.display = 'none';
 }
-// ── Ranking ───────────────────────────────────────────────
-
+// Ranking 
 // Llena la tabla de ranking con el array de filas recibido del backend
 // Resalta la fila del jugador logueado
 function renderizarTablaRanking(filas, usuarioActual) {
@@ -83,8 +82,8 @@ function renderizarTablaRanking(filas, usuarioActual) {
     tabla.innerHTML = '';
 
     filas.forEach((fila, index) => {
-        let posicion  = index + 1;
-        let esTop     = posicion <= 3;
+        let posicion = index + 1;
+        let esTop = posicion <= 3;
         let esMiFila  = fila.usuario === usuarioActual;
 
         tabla.innerHTML += `
@@ -100,15 +99,14 @@ function renderizarTablaRanking(filas, usuarioActual) {
 // Muestra la sección de fin de partida con el puntaje
 function mostrarFinPartida(puntaje) {
     document.getElementById('finPartida').style.display = 'block';
-    document.getElementById('puntajeFinal').innerHTML   = `
+    document.getElementById('puntajeFinal').innerHTML = `
         ${puntaje}
         <span>aciertos consecutivos</span>
     `;
 }
 
 
-// ── Admin ─────────────────────────────────────────────────
-
+//  Admin 
 // Llena la tabla de ítems en el panel admin
 function renderizarTablaItems(items) {
     let tabla = document.getElementById('tablaItems');
@@ -122,7 +120,7 @@ function renderizarTablaItems(items) {
                 <td>${Number(item.valor).toLocaleString('es-AR')}</td>
                 <td>
                     <button class="btn-secondary" onclick="prepararEdicion(${item.id_item})">Editar</button>
-                    <button class="btn-danger"    onclick="eliminarItem(${item.id_item})">Eliminar</button>
+                    <button class="btn-danger" onclick="eliminarItem(${item.id_item})">Eliminar</button>
                 </td>
             </tr>
         `;
@@ -165,10 +163,10 @@ function mostrarFormEdicion(visible) {
 
 // Carga los datos de un ítem en el formulario de edición
 function cargarDatosEdicion(item) {
-    document.getElementById('editId').value        = item.id_item;
-    document.getElementById('editNombre').value    = item.nombre;
-    document.getElementById('editImagen').value    = item.imagen_url;
-    document.getElementById('editValor').value     = item.valor;
+    document.getElementById('editId').value = item.id_item;
+    document.getElementById('editNombre').value = item.nombre;
+    document.getElementById('editImagen').value = item.imagen_url;
+    document.getElementById('editValor').value = item.valor;
     document.getElementById('editCategoria').value = item.id_categoria;
     mostrarFormEdicion(true);
 }
@@ -178,6 +176,6 @@ function getMensajeAdmin() { return document.getElementById('mensajeAdmin') }
 function mostrarMensajeAdmin(texto, esError = false) {
     let el = getMensajeAdmin();
     el.textContent = texto;
-    el.className   = esError ? 'mensaje' : 'mensaje ok';
+    el.className = esError ? 'mensaje' : 'mensaje ok';
     setTimeout(() => { el.textContent = '' }, 3000);
 }

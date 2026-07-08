@@ -70,7 +70,7 @@ async function registro() {
     }
 }
 
-// TAREA 6 + 9: Juego (juego.html)// 
+// TAREA 6 + 9: Juego (juego.html)
  
 let juego; 
  
@@ -78,7 +78,7 @@ let juego;
 // oculta el selector y muestra la pantalla del juego
 function elegirCategoria(id_categoria) {
     document.getElementById('selectorCategoria').style.display = 'none';
-    document.getElementById('arenaJuego').style.display        = 'flex';
+    document.getElementById('arenaJuego').style.display = 'flex';
     iniciarJuego(id_categoria);
 }
  
@@ -130,7 +130,7 @@ async function responder(respuesta) {
         // Espera 1.8 segundos, guarda el puntaje y va al ranking
         setTimeout(async () => {
             await pedirAlServidor('/Puntajes', 'POST', {
-                puntaje:    juego.puntaje,
+                puntaje: juego.puntaje,
                 id_jugador: JSON.parse(sessionStorage.getItem('jugador')).id_jugador
             });
             sessionStorage.setItem('ultimoPuntaje', juego.puntaje);
