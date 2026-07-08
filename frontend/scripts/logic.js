@@ -160,7 +160,7 @@ async function cargarRanking() {
 }
 
 // TAREA 7 + 11: Panel Admin (admin.html)
-let itemsGuardados      = []; // copia local para poder editar sin ir al servidor
+let itemsGuardados = []; // copia local para poder editar sin ir al servidor
 let categoriasGuardadas = [];
 
 // Carga todos los datos al abrir el panel admin
@@ -202,7 +202,9 @@ async function agregarItem() {
 // Busca el ítem en la copia local y abre el formulario de edición con sus datos
 function prepararEdicion(id_item) {
     let item = itemsGuardados.find(i => i.id_item === id_item);
-    if (item) cargarDatosEdicion(item);
+    if (item) {
+        cargarDatosEdicion(item);
+    }
 }
 
 // Guarda los cambios del formulario de edición
