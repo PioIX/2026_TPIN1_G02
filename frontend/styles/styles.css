@@ -13,7 +13,7 @@ body {
     min-height: 100vh;
 }
 
-/* ── Tipografía ── */
+/*  Tipografía  */
 h1 {
     font-size: 2.5rem;
     font-weight: 900;
@@ -28,7 +28,7 @@ h2 {
     text-transform: uppercase;
 }
 
-/* ── Card genérica ── */
+/*  Card genérica  */
 .card {
     background-color: #1a1a1a;
     border: 1px solid #2a2a2a;
@@ -36,7 +36,7 @@ h2 {
     padding: 40px;
 }
 
-/* ── Botones ── */
+/*  Botones  */
 .btn-primary {
     background-color: #ffffff;
     color: #0d0d0d;
@@ -90,7 +90,7 @@ h2 {
     color: #0d0d0d;
 }
 
-/* ── Inputs ── */
+/*  Inputs  */
 input, select {
     background-color: #0d0d0d;
     border: 1px solid #2a2a2a;
@@ -115,7 +115,7 @@ select option {
     background-color: #1a1a1a;
 }
 
-/* ── Mensajes de feedback ── */
+/*  Mensajes de feedback  */
 .mensaje {
     text-align: center;
     font-size: 0.85rem;
@@ -127,7 +127,7 @@ select option {
     color: #55ff99;
 }
 
-/* ── Tabla ── */
+/*  Tabla  */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -157,7 +157,7 @@ tbody tr:hover {
     background-color: #1a1a1a;
 }
 
-/* ── Tabs ── */
+/*  Tabs  */
 .tabs {
     display: flex;
     border-bottom: 1px solid #2a2a2a;
@@ -182,7 +182,7 @@ tbody tr:hover {
     border-bottom: 2px solid #ffffff;
 }
 
-/* ── Centrado general ── */
+/*  Centrado general  */
 .centrado {
     display: flex;
     flex-direction: column;
@@ -190,9 +190,7 @@ tbody tr:hover {
     justify-content: center;
 }
 
-/* ============================================================
-   index.html — Login y Registro
-   ============================================================ */
+/* index.html — Login y Registro*/
 
 body.login-page {
     display: flex;
@@ -378,9 +376,7 @@ body.juego-page {
     color: #ff5555; 
     letter-spacing: 2px; 
 }
-/* ============================================================
-   menu.html
-   ============================================================ */
+/* menu.html */
 
 body.menu-page {
     display: flex;
@@ -543,9 +539,7 @@ body.admin-page { padding: 32px; }
     margin-bottom: 16px;
 }
 
-/* ============================================================
-   como-jugar.html
-   ============================================================ */
+/* como-jugar.html */
 
 body.como-jugar-page {
     display: flex;
@@ -594,4 +588,56 @@ body.como-jugar-page {
     font-size: 0.9rem;
     color: #888;
     line-height: 1.6;
+}
+/* juego.html — Selector de categoría */
+
+#selectorCategoria {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    gap: 24px;
+    padding: 40px 20px;
+}
+
+.selector-titulo {
+    font-size: 0.85rem;
+    letter-spacing: 3px;
+    color: #888;
+    text-transform: uppercase;
+}
+
+.selector-botones {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.btn-categoria {
+    background-color: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    border-radius: 12px;
+    color: #ffffff;
+    padding: 28px 36px;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s;
+    min-width: 180px;
+    text-align: center;
+}
+
+.btn-categoria:hover {
+    border-color: #ffffff;
+    background-color: #222222;
+}
+
+.btn-categoria .cat-emoji {
+    display: block;
+    font-size: 2rem;
+    margin-bottom: 12px;
 }
