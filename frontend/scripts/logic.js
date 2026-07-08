@@ -70,7 +70,7 @@ async function registro() {
     }
 }
 
-// TAREA 6 + 9: Juego (juego.html)// 
+// TAREA 6 + 9: Juego (juego.html)
  
 let juego; 
  
