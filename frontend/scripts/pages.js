@@ -18,7 +18,7 @@ function iniciarPaginaJuego() {
     if (!jugador) window.location.href = 'index.html';
 }
 
-//  RANKING (ranking.html) 
+// RANKING (ranking.html) 
  
 function iniciarPaginaRanking() {
     let puntaje = sessionStorage.getItem('ultimoPuntaje');
