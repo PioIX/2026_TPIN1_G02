@@ -139,24 +139,13 @@ async function responder(respuesta) {
     }
 }
 
-// Envía el puntaje final al servidor para guardarlo en la base de datos.
-async function guardarPuntaje(puntaje) {
-    let jugador = JSON.parse(sessionStorage.getItem('jugador'));
-
-    await fetch(`${BASE_URL}/Puntajes`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ puntaje: puntaje, id_jugador: jugador.id_jugador })
-    })
-}
-
 // TAREA 10: Ranking (ranking.html)
 // Pide el top 10 al servidor y lo muestra en la tabla
 async function cargarRanking() {
     let filas = await pedirAlServidor('/Ranking');
     let jugador = JSON.parse(sessionStorage.getItem('jugador'));
     let usuarioActual = jugador ? jugador.usuario : null;
-    renderizarTablaRanking(filas, usuarioActual);
+    mostrarTablaRanking(filas, usuarioActual);
 }
 
 // TAREA 7 + 11: Panel Admin (admin.html)
@@ -172,7 +161,7 @@ async function cargarDatosAdmin() {
 
 async function cargarItems() {
     itemsGuardados = await pedirAlServidor('/Items');
-    renderizarTablaItems(itemsGuardados);
+    mostrarTablaItems(itemsGuardados);
 }
 
 async function cargarJugadores() {

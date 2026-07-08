@@ -35,13 +35,6 @@ function mostrarTab(tab) {
     document.getElementById('formRegistro').classList.toggle('activo', !esLogin);
     document.querySelectorAll('.tab')[0].classList.toggle('activo', esLogin);
     document.querySelectorAll('.tab')[1].classList.toggle('activo', !esLogin);
-    if (tab === 'login') {
-        document.getElementById('formLogin').classList.add('activo');
-        document.querySelectorAll('.tab')[0].classList.add('activo');
-    } else {
-        document.getElementById('formRegistro').classList.add('activo');
-        document.querySelectorAll('.tab')[1].classList.add('activo');
-    }
 }
 
 // JUEGO (juego.html) 
@@ -56,8 +49,6 @@ function mostrarItemIzquierda(item) {
 
 // Mostrar el ítem de la derecha (el que hay que adivinar, valor oculto)
 function mostrarItemDerecha(item) {
-    document.getElementById('imagenDerecha').src = item.imagen_url;
-    document.getElementById('nombreDerecha').textContent = item.nombre;
     document.getElementById('imagenDerecha').src = item.imagen_url;
     document.getElementById('nombreDerecha').textContent = item.nombre;
     document.getElementById('categoriaDerecha').textContent = item.comparacion;
@@ -89,7 +80,7 @@ function ocultarResultado() {
 // Ranking 
 // Llena la tabla de ranking con el array de filas recibido del backend
 // Resalta la fila del jugador logueado
-function renderizarTablaRanking(filas, usuarioActual) {
+function mostrarTablaRanking(filas, usuarioActual) {
     let tabla = document.getElementById('tablaRanking');
     tabla.innerHTML = '';
 
@@ -120,7 +111,7 @@ function mostrarFinPartida(puntaje) {
 
 //  Admin 
 // Llena la tabla de ítems en el panel admin
-function renderizarTablaItems(items) {
+function mostrarTablaItems(items) {
     let tabla = document.getElementById('tablaItems');
     tabla.innerHTML = '';
     items.forEach(item => {
@@ -179,10 +170,6 @@ function cargarDatosEdicion(item) {
     document.getElementById('editNombre').value = item.nombre;
     document.getElementById('editImagen').value = item.imagen_url;
     document.getElementById('editValor').value = item.valor;
-    document.getElementById('editId').value = item.id_item;
-    document.getElementById('editNombre').value = item.nombre;
-    document.getElementById('editImagen').value = item.imagen_url;
-    document.getElementById('editValor').value = item.valor;
     document.getElementById('editCategoria').value = item.id_categoria;
     mostrarFormEdicion(true);
 }
@@ -191,7 +178,6 @@ function cargarDatosEdicion(item) {
 function mostrarMensajeAdmin(texto, esError = false) {
     let el = document.getElementById('mensajeAdmin');
     el.textContent = texto;
-    el.className = esError ? 'mensaje' : 'mensaje ok';
     el.className = esError ? 'mensaje' : 'mensaje ok';
     setTimeout(() => { el.textContent = '' }, 3000);
 }

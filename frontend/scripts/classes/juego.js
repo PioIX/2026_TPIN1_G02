@@ -21,7 +21,7 @@ class Juego {
     }
 
     itemAlAzarDistinto(itemEnPantalla) {
-        let opciones = this.items.filter(item => item.id_item !== itemEnPantalla.id_item);
+        let opciones = this.items.filter(item => item.id_item != itemEnPantalla.id_item);
         let indice   = Math.floor(Math.random() * opciones.length);
         return opciones[indice];
     }
