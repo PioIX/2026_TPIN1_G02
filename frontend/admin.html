@@ -17,16 +17,16 @@
 
     <div class="admin-tabs">
         <div class="admin-tab activo" onclick="cambiarTab('items')">ÍTEMS</div>
-        <div class="admin-tab"        onclick="cambiarTab('jugadores')">JUGADORES</div>
+        <div class="admin-tab" onclick="cambiarTab('jugadores')">JUGADORES</div>
     </div>
 
     <div id="seccionItems" class="admin-seccion activa">
 
         <h2>AGREGAR ÍTEM</h2>
         <div class="form-grid">
-            <input id="agregarNombre"    type="text"   placeholder="Nombre">
-            <input id="agregarImagen"    type="text"   placeholder="URL de imagen (ej: public/spotify/nombre.jpg)">
-            <input id="agregarValor"     type="number" placeholder="Valor numérico">
+            <input id="agregarNombre" type="text" placeholder="Nombre">
+            <input id="agregarImagen" type="text" placeholder="URL de imagen (ej: public/spotify/nombre.jpg)">
+            <input id="agregarValor" type="number" placeholder="Valor numérico">
             <select id="agregarCategoria"></select>
         </div>
         <button class="btn-primary" onclick="agregarItem()">AGREGAR</button>
@@ -35,13 +35,13 @@
             <h3>EDITANDO ÍTEM</h3>
             <input id="editId" type="hidden">
             <div class="form-grid">
-                <input id="editNombre"    type="text"   placeholder="Nombre">
-                <input id="editImagen"    type="text"   placeholder="URL de imagen">
-                <input id="editValor"     type="number" placeholder="Valor numérico">
+                <input id="editNombre" type="text" placeholder="Nombre">
+                <input id="editImagen" type="text" placeholder="URL de imagen">
+                <input id="editValor" type="number" placeholder="Valor numérico">
                 <select id="editCategoria"></select>
             </div>
             <div>
-                <button class="btn-primary"   onclick="editarItem()">GUARDAR CAMBIOS</button>
+                <button class="btn-primary" onclick="editarItem()">GUARDAR CAMBIOS</button>
                 <button class="btn-secondary" onclick="mostrarFormEdicion(false)">CANCELAR</button>
             </div>
         </div>
