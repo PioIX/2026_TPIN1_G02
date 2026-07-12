@@ -51,22 +51,41 @@ async function registro() {
     let datos = {
         nombre: getRegNombre(),
         usuario: getRegUsuario(),
-        contrasena: getRegContrasena()
+        contrasena: getRegContrasena(),
+        contrasena: getRegContrasena(),
     }
 
-    const response = await fetch(`${BASE_URL}/Registro`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(datos)
-    })
-
-    let result = await response.text()
-
-    if (result.includes('error') || result.includes('Error')) {
-        mostrarMensajeRegistro('El usuario ya existe. Intentá con otro nombre de usuario.');
+    
+    if (datos.nombre === null || datos.nombre === undefined || String(datos.nombre).trim() === '') {
+        mostrarMensajeRegistro("El nombre no puede estar vacio")
+        return;
     } else {
         mostrarMensajeRegistro('¡Cuenta creada! Ya podés iniciar sesión.', false);
         mostrarTab('login');
+        if (datos.usuario === null || datos.usuario === undefined || String(datos.usuario).trim() === '') {
+            mostrarMensajeRegistro("El usuario no puede estar vacio")
+            return;
+        } else {
+            if (datos.contrasena === null || datos.contrasena === undefined || String(datos.contrasena).trim() === '') {
+                mostrarMensajeRegistro("La contraseña no puede estar vacia")
+                return;
+            } else {
+                const response = await fetch(`${BASE_URL}/Registro`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(datos)
+                })
+
+                let result = await response.text()
+
+                if (result.includes('error') || result.includes('Error')) {
+                    mostrarMensajeRegistro('El usuario ya existe. Intentá con otro nombre de usuario.');
+                } else {
+                    mostrarMensajeRegistro('¡Cuenta creada! Ya podés iniciar sesión.', false);
+                    mostrarTab('login');
+                }
+            }
+        }
     }
 }
 
