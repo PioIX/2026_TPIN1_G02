@@ -20,14 +20,19 @@ async function pedirAlServidor(ruta, metodo = 'GET', datos = null) {
 
 // TAREA 5: Login y Registro
 async function login() {
-    let datos = {
-        usuario: getLoginUsuario(),
-        contrasena: getLoginContrasena()
+    let usuario = getLoginUsuario();
+    let contrasena = getLoginContrasena();
+
+    if (!usuario || !contrasena) {
+        mostrarMensajeLogin('Ingresá tu usuario y contraseña.');
+        return;
     }
+
+    let datos = {usuario, contrasena}
 
     const response = await fetch(`${BASE_URL}/Login`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(datos)
     })
 
@@ -39,20 +44,20 @@ async function login() {
     }
 
     sessionStorage.setItem('jugador', JSON.stringify(result));
-
-    if (result.es_admin) {
-        window.location.href = 'admin.html';
-    } else {
-        window.location.href = 'menu.html';
-    }
+    window.location.href = result.es_admin ? 'admin.html' : 'menu.html';
 }
 
 async function registro() {
-    let datos = {
-        nombre: getRegNombre(),
-        usuario: getRegUsuario(),
-        contrasena: getRegContrasena()
+    let nombre = getRegNombre();
+    let usuario = getRegUsuario();
+    let contrasena = getRegContrasena();
+
+    if (!nombre || !usuario || !contrasena) {
+        mostrarMensajeRegistro('Completá todos los campos antes de registrarte.');
+        return;
     }
+
+    let datos = {nombre, usuario, contrasena}
 
     const response = await fetch(`${BASE_URL}/Registro`, {
         method: 'POST',
