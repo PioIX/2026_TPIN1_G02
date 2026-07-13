@@ -53,7 +53,6 @@ function mostrarItemDerecha(item) {
     document.getElementById('nombreDerecha').textContent = item.nombre;
     document.getElementById('categoriaDerecha').textContent = item.comparacion;
     document.getElementById('valorDerecha').textContent = '???';
-    document.getElementById('valorDerecha').textContent = '???';
 }
 
 // Mostrar el valor real del ítem de la derecha (cuando el jugador ya respondió)

@@ -98,7 +98,7 @@ async function iniciarJuego(id_categoria) {
  
     // Se queda solo con los ítems de la categoría que eligió el jugador
     let items = data
-        .filter(d => d.id_categoria === id_categoria)
+        .filter(d => d.id_categoria == id_categoria)
         .map(d => new Item(d.id_item, d.nombre, d.imagen_url, parseFloat(d.valor), d.id_categoria, d.nombre_categoria, d.comparacion));
  
     if (items.length < 2) {

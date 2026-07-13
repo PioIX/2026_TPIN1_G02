@@ -26,6 +26,10 @@ app.get('/', function(req, res) {
 // Valida que no exista el usuario y que los campos esten completos, luego lo inserta
 app.post('/Registro', async function(req, res) {
     try {
+        if (!req.body.nombre || !req.body.usuario || !req.body.contrasena) {
+            return res.send({ error: 'Todos los campos son obligatorios' });
+        }
+        
         let usuarioExistente = await realizarQuery(`
             SELECT * FROM Jugadores
             WHERE usuario = '${req.body.usuario}'
@@ -33,10 +37,6 @@ app.post('/Registro', async function(req, res) {
 
         if (usuarioExistente.length > 0) {
             throw new Error('El usuario ya existe')
-        }
-
-        if (!req.body.nombre || !req.body.usuario || !req.body.contrasena) {
-            return res.send({ error: 'Todos los campos son obligatorios' });
         }
 
         await realizarQuery(`
@@ -63,6 +63,10 @@ app.post('/Registro', async function(req, res) {
 // El front usa es_admin para saber a dónde redirigir
 app.post('/Login', async function(req, res) {
     try {
+        if (!req.body.usuario || !req.body.contrasena) {
+            return res.send({ error: 'Ingresá tu usuario y contraseña' });
+        }
+
         let resultado = await realizarQuery(`
             SELECT * FROM Jugadores
             WHERE usuario    = '${req.body.usuario}'
@@ -71,10 +75,6 @@ app.post('/Login', async function(req, res) {
 
         if (resultado.length === 0) {
             throw new Error('Usuario o contraseña incorrectos')
-        }
-
-        if (!req.body.usuario || !req.body.contrasena) {
-            return res.send({ error: 'Ingresá tu usuario y contraseña' });
         }
 
         res.send(resultado[0])
