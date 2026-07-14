@@ -2,7 +2,9 @@
 *.env.
 env.
 *.env
-Back\.home.env
-Back\.pio.env
-Back/.home.env
-Back/.pio.env
+backend\.home.env
+backend\.pio.env
+backend/.home.env
+backend/.pio.env
+backend/node_modules
+backend\node_modules
